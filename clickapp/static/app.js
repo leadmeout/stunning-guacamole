@@ -23,6 +23,14 @@ function deleteRow() {
 
   const form_table = document.getElementById('table-id')
   const form_row = document.getElementById('table-row');
-  form_row.remove();
+
+  var numRows = form_table.getElementsByTagName('tr').length
+
+  if (numRows >= 3) {
+    form_row.remove();
+  } else {
+    alert('Die letzte Zeile kann nicht gelöscht werden!' + '\n' + "The last row cannot be deleted!")
+  };
+
 
 }

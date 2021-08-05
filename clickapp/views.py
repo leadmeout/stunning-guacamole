@@ -16,7 +16,9 @@ def result(request):
     context = {'form': form}
 
     if request.method == 'POST':
-        if form.is_valid():
-            return render(request, 'clickapp/result.html', context)
+
+        for r in request:
+            if form.is_valid():
+                return render(request, 'clickapp/result.html', context)
     else:
         return render(request, 'clickapp/index.html', context)
