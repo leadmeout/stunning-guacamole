@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<table>
+    <td>Lager</td>
+    <td>Kunde</td>
+    <td>Netto</td>
+    <td>Steuersatz</td>
+    <td>Brutto</td>
+    <td>Markierung</td>
+
+    <tr>
+        <form id="calc_form" action="{% url 'result' %}" method="post">
+            {% csrf_token %}
+            <td>{{ form.warehouse|as_crispy_field }}</td>
+            <td>{{ form.customer|as_crispy_field }}</td>
+            <td>{{ form.net|as_crispy_field }}</td>
+            <td>{{ form.get_tax_rate }}</td>
+            <td>{{ form.get_gross }}</td>
+            <td>{{ form.get_classification }}</td>
+        </form>
+    </tr>
+
+</table>
+<br>
+
+<input type="submit" value="Calculate" form="calc-form">
+<button type="button" id="add-row-btn" onclick="addRow()">Add row</button>
+<button type="button" id="delete-row-btn" onclick="deleteRow()">Delete last row</button>
+
+{% endblock content %}

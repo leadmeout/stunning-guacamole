@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+{% load static %}
+
+<script type="text/javascript" src="{% static 'app.js' %}"></script>
+
+<table id="table-id">
+  <td>Lager</td>
+  <td>Kunde</td>
+  <td>Netto</td>
+  <td>Steuersatz</td>
+  <td>Brutto</td>
+  <td>Markierung</td>
+
+
+  <tr id='table-row'>
+    <div id="duplicate-form">
+      <form id="calc-form" action="{% url 'result' %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <td>{{ field|as_crispy_field }}</td>
+        {% endfor %}
+    </div>
+
+    </form>
+  </tr>
+
+</table>
+<br>
+
+<input type="submit" value="Calculate" form="calc-form">
+<button type="button" id="add-row-btn" onclick="addRow()">Add row</button>
+<button type="button" id="delete-row-btn" onclick="deleteRow()">Delete last row</button>
+
+
+
+
+
+{% endblock content %}
