@@ -13,13 +13,16 @@
 
 
   <tr id='table-row'>
-    <div id="duplicate-form">
+
       <form id="calc-form" action="{% url 'result' %}" method="post">
         {% csrf_token %}
-        {% for field in form %}
-        <td>{{ field|as_crispy_field }}</td>
-        {% endfor %}
-    </div>
+        <form>
+          {% csrf_token %}
+          {% for field in form %}
+          <td>{{ field|as_crispy_field }}</td>
+          {% endfor %}
+
+          </form>
     </form>
   </tr>
 </table>

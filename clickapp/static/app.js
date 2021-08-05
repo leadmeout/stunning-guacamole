@@ -11,26 +11,22 @@
 
 function addRow() {
 
-  const form_table = document.getElementById('table-id')
-  const form_row = document.getElementById('table-row');
-  const form_row_copy = form_row.cloneNode(true);
-  form_table.appendChild(form_row_copy);
+  const formTable = document.getElementById('table-id');
+  const formRow = document.getElementById('table-row');
+  const formRowCopy = formRow.cloneNode(true);
+  formTable.appendChild(formRowCopy);
 
 }
 
 
 function deleteRow() {
 
-  const form_table = document.getElementById('table-id')
-  const form_row = document.getElementById('table-row');
+  const formTable = document.getElementById('table-id');
+  var rowCount = formTable.rows.length;
 
-  var numRows = form_table.getElementsByTagName('tr').length
-
-  if (numRows >= 3) {
-    form_row.remove();
+  if (rowCount >= 3) {
+    formTable.deleteRow(rowCount - 1)
   } else {
-    alert('Die letzte Zeile kann nicht gelöscht werden!' + '\n' + "The last row cannot be deleted!")
+    alert('Die letzte Zeile darf nicht gelöscht werden!' + '\n' + "The last row cannot be deleted!")
   };
-
-
 }
